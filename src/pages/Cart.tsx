@@ -12,7 +12,7 @@ import {
 } from "../redux/reducer/cartReducer";
 import { server } from "../redux/store";
 import { cartReducerInitialState } from "../types/reducer-types";
-import { CartItem } from "../types/types";
+import { cartItem } from "../types/types";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -25,12 +25,12 @@ const Cart = () => {
   const [couponCode, setCouponCode] = useState<string>("");
   const [isValidCouponCode, setIsValidCouponCode] = useState<boolean>(false);
 
-  const incrementHandler = (cartItem: CartItem) => {
+  const incrementHandler = (cartItem: cartItem) => {
     if (cartItem.quantity >= cartItem.stock) return;
 
     dispatch(addToCart({ ...cartItem, quantity: cartItem.quantity + 1 }));
   };
-  const decrementHandler = (cartItem: CartItem) => {
+  const decrementHandler = (cartItem: cartItem) => {
     if (cartItem.quantity <= 1) return;
     dispatch(addToCart({ ...cartItem, quantity: cartItem.quantity - 1 }));
   };
